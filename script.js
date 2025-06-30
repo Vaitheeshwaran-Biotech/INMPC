@@ -1,3 +1,4 @@
+console.log("✅ script.js is running");
 let canvas, ctx, uploadedImage;
 
 document.addEventListener('DOMContentLoaded', function () {+   console.log('handleImageFile called for:', file);
