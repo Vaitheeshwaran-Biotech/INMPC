@@ -1,6 +1,6 @@
 let canvas, ctx, uploadedImage;
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {+   console.log('handleImageFile called for:', file);
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
 
