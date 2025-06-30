@@ -1,29 +1,31 @@
 let canvas, ctx, uploadedImage;
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
-    
-    // Set up event listeners
-    document.getElementById('uploadArea').addEventListener('click', () => {
-        document.getElementById('imageInput').click();
-    });
-    
-    document.getElementById('imageInput').addEventListener('change', handleImageUpload);
-    
-    // Drag and drop
+
     const uploadArea = document.getElementById('uploadArea');
+    const imageInput = document.getElementById('imageInput');
+
+    // Click to upload
+    uploadArea.addEventListener('click', () => {
+        imageInput.click();
+    });
+
+    // File input change
+    imageInput.addEventListener('change', handleImageUpload);
+
+    // Drag and drop
     uploadArea.addEventListener('dragover', (e) => {
         e.preventDefault();
         uploadArea.style.borderColor = '#667eea';
     });
-    
+
     uploadArea.addEventListener('dragleave', (e) => {
         e.preventDefault();
         uploadArea.style.borderColor = '#ddd';
     });
-    
+
     uploadArea.addEventListener('drop', (e) => {
         e.preventDefault();
         uploadArea.style.borderColor = '#ddd';
@@ -33,16 +35,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Real-time updates
+    // Controls
     document.getElementById('textInput').addEventListener('input', updateCanvas);
     document.getElementById('fontFamily').addEventListener('change', updateCanvas);
-    document.getElementById('fontSize').addEventListener('input', function() {
+    document.getElementById('fontSize').addEventListener('input', function () {
         document.getElementById('fontSizeValue').textContent = this.value;
         updateCanvas();
     });
     document.getElementById('textColor').addEventListener('change', updateCanvas);
     document.getElementById('textPosition').addEventListener('change', updateCanvas);
-    document.getElementById('textShadow').addEventListener('input', function() {
+    document.getElementById('textShadow').addEventListener('input', function () {
         document.getElementById('textShadowValue').textContent = this.value;
         updateCanvas();
     });
@@ -50,9 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function handleImageUpload(e) {
     const file = e.target.files[0];
-    if (file) {
-        handleImageFile(file);
-    }
+    if (file) handleImageFile(file);
 }
 
 function handleImageFile(file) {
@@ -62,14 +62,14 @@ function handleImageFile(file) {
     }
 
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
         const img = new Image();
-        img.onload = function() {
+        img.onload = function () {
             uploadedImage = img;
             setupCanvas();
             updateCanvas();
-            
-            // Hide upload text, show canvas
+
+            // Show canvas
             document.getElementById('uploadText').classList.add('hidden');
             document.getElementById('canvas').classList.remove('hidden');
             document.getElementById('uploadArea').classList.add('has-image');
@@ -81,57 +81,34 @@ function handleImageFile(file) {
 }
 
 function setupCanvas() {
-    const maxWidth = 800;
-    const maxHeight = 600;
-    
-    let { width, height } = uploadedImage;
-    
-    // Scale down if too large
-    if (width > maxWidth || height > maxHeight) {
-        const ratio = Math.min(maxWidth / width, maxHeight / height);
-        width *= ratio;
-        height *= ratio;
-    }
-    
-    canvas.width = width;
-    canvas.height = height;
-}
-
-function updateCanvas() {
-    if (!uploadedImage) return;
-
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Draw image
-    ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
-    
 let canvas, ctx, uploadedImage;
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
-    
-    // Set up event listeners
-    document.getElementById('uploadArea').addEventListener('click', () => {
-        document.getElementById('imageInput').click();
-    });
-    
-    document.getElementById('imageInput').addEventListener('change', handleImageUpload);
-    
-    // Drag and drop
+
     const uploadArea = document.getElementById('uploadArea');
+    const imageInput = document.getElementById('imageInput');
+
+    // Click to upload
+    uploadArea.addEventListener('click', () => {
+        imageInput.click();
+    });
+
+    // File input change
+    imageInput.addEventListener('change', handleImageUpload);
+
+    // Drag and drop
     uploadArea.addEventListener('dragover', (e) => {
         e.preventDefault();
         uploadArea.style.borderColor = '#667eea';
     });
-    
+
     uploadArea.addEventListener('dragleave', (e) => {
         e.preventDefault();
         uploadArea.style.borderColor = '#ddd';
     });
-    
+
     uploadArea.addEventListener('drop', (e) => {
         e.preventDefault();
         uploadArea.style.borderColor = '#ddd';
@@ -141,16 +118,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Real-time updates
+    // Controls
     document.getElementById('textInput').addEventListener('input', updateCanvas);
     document.getElementById('fontFamily').addEventListener('change', updateCanvas);
-    document.getElementById('fontSize').addEventListener('input', function() {
+    document.getElementById('fontSize').addEventListener('input', function () {
         document.getElementById('fontSizeValue').textContent = this.value;
         updateCanvas();
     });
     document.getElementById('textColor').addEventListener('change', updateCanvas);
     document.getElementById('textPosition').addEventListener('change', updateCanvas);
-    document.getElementById('textShadow').addEventListener('input', function() {
+    document.getElementById('textShadow').addEventListener('input', function () {
         document.getElementById('textShadowValue').textContent = this.value;
         updateCanvas();
     });
@@ -158,9 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function handleImageUpload(e) {
     const file = e.target.files[0];
-    if (file) {
-        handleImageFile(file);
-    }
+    if (file) handleImageFile(file);
 }
 
 function handleImageFile(file) {
@@ -170,14 +145,14 @@ function handleImageFile(file) {
     }
 
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
         const img = new Image();
-        img.onload = function() {
+        img.onload = function () {
             uploadedImage = img;
             setupCanvas();
             updateCanvas();
-            
-            // Hide upload text, show canvas
+
+            // Show canvas
             document.getElementById('uploadText').classList.add('hidden');
             document.getElementById('canvas').classList.remove('hidden');
             document.getElementById('uploadArea').classList.add('has-image');
@@ -191,76 +166,53 @@ function handleImageFile(file) {
 function setupCanvas() {
     const maxWidth = 800;
     const maxHeight = 600;
-    
     let { width, height } = uploadedImage;
-    
-    // Scale down if too large
-    if (width > maxWidth || height > maxHeight) {
-        const ratio = Math.min(maxWidth / width, maxHeight / height);
-        width *= ratio;
-        height *= ratio;
-    }
-    
-    canvas.width = width;
-    canvas.height = height;
+
+    const ratio = Math.min(maxWidth / width, maxHeight / height, 1);
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
 }
 
 function updateCanvas() {
     if (!uploadedImage) return;
 
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Draw image
     ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
-    
-    // Get text settings
+
     const text = document.getElementById('textInput').value;
     if (!text) return;
-    
+
     const fontFamily = document.getElementById('fontFamily').value;
-    const fontSize = document.getElementById('fontSize').value;
+    const fontSize = parseInt(document.getElementById('fontSize').value);
     const textColor = document.getElementById('textColor').value;
     const textPosition = document.getElementById('textPosition').value;
-    const shadowBlur = document.getElementById('textShadow').value;
-    
-    // Set text styles
+    const shadowBlur = parseInt(document.getElementById('textShadow').value);
+
     ctx.font = `bold ${fontSize}px ${fontFamily}`;
     ctx.fillStyle = textColor;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    
-    // Add shadow
     ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-    ctx.shadowBlur = parseInt(shadowBlur);
+    ctx.shadowBlur = shadowBlur;
     ctx.shadowOffsetX = 2;
     ctx.shadowOffsetY = 2;
-    
-    // Calculate text position
-    let x = canvas.width / 2;
+
+    const x = canvas.width / 2;
     let y;
-    
-    switch(textPosition) {
-        case 'top':
-            y = fontSize;
-            break;
-        case 'bottom':
-            y = canvas.height - fontSize;
-            break;
-        default: // center
-            y = canvas.height / 2;
+    switch (textPosition) {
+        case 'top': y = fontSize; break;
+        case 'bottom': y = canvas.height - fontSize; break;
+        default: y = canvas.height / 2;
     }
-    
-    // Handle long text by wrapping
+
     const words = text.split(' ');
-    const maxWidth = canvas.width - 40; // padding
-    let lines = [];
+    const maxWidth = canvas.width - 40;
+    const lines = [];
     let currentLine = '';
-    
+
     for (let word of words) {
         const testLine = currentLine + (currentLine ? ' ' : '') + word;
         const metrics = ctx.measureText(testLine);
-        
         if (metrics.width > maxWidth && currentLine) {
             lines.push(currentLine);
             currentLine = word;
@@ -269,14 +221,13 @@ function updateCanvas() {
         }
     }
     if (currentLine) lines.push(currentLine);
-    
-    // Draw each line
+
     const lineHeight = fontSize * 1.2;
     const totalHeight = lines.length * lineHeight;
-    let startY = y - (totalHeight / 2) + (lineHeight / 2);
-    
+    let startY = y - totalHeight / 2 + lineHeight / 2;
+
     lines.forEach((line, index) => {
-        ctx.fillText(line, x, startY + (index * lineHeight));
+        ctx.fillText(line, x, startY + index * lineHeight);
     });
 }
 
@@ -287,60 +238,59 @@ function setQuote(quote) {
 
 function downloadPoster() {
     if (!canvas) return;
-    
     const link = document.createElement('a');
     link.download = 'motivational-poster.png';
     link.href = canvas.toDataURL();
     link.click();
-}￼Enter    // Get text settings
+}￼Enter    const maxWidth = 800;
+    const maxHeight = 600;
+    let { width, height } = uploadedImage;
+
+    const ratio = Math.min(maxWidth / width, maxHeight / height, 1);
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
+}
+
+function updateCanvas() {
+    if (!uploadedImage) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
+
     const text = document.getElementById('textInput').value;
     if (!text) return;
-    
+
     const fontFamily = document.getElementById('fontFamily').value;
-    const fontSize = document.getElementById('fontSize').value;
+    const fontSize = parseInt(document.getElementById('fontSize').value);
     const textColor = document.getElementById('textColor').value;
     const textPosition = document.getElementById('textPosition').value;
-    const shadowBlur = document.getElementById('textShadow').value;
-    
-    // Set text styles
+    const shadowBlur = parseInt(document.getElementById('textShadow').value);
+
     ctx.font = `bold ${fontSize}px ${fontFamily}`;
     ctx.fillStyle = textColor;
-    ctx.textAlign = 'center';
+x.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    
-    // Add shadow
     ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-    ctx.shadowBlur = parseInt(shadowBlur);
+    ctx.shadowBlur = shadowBlur;
     ctx.shadowOffsetX = 2;
     ctx.shadowOffsetY = 2;
-    
-    // Calculate text position
-    let x = canvas.width / 2;
+
+    const x = canvas.width / 2;
     let y;
-    
-itch(textPosition) {
-        case 'top':
-            y = fontSize;
-            break;
-        case 'bottom':
-            y = canvas.height - fontSize;
-            break;
-        default: // center
-            y = canvas.height / 2;
+    switch (textPosition) {
+        case 'top': y = fontSize; break;
+        case 'bottom': y = canvas.height - fontSize; break;
+        default: y = canvas.height / 2;
     }
-    
-    // Handle long text by wrapping
+
     const words = text.split(' ');
-    const maxWidth = canvas.width - 40; // padding
-    let lines = [];
+    const maxWidth = canvas.width - 40;
+    const lines = [];
     let currentLine = '';
-    
+
     for (let word of words) {
         const testLine = currentLine + (currentLine ? ' ' : '') + word;
         const metrics = ctx.measureText(testLine);
-        
         if (metrics.width > maxWidth && currentLine) {
             lines.push(currentLine);
             currentLine = word;
-        } else {
-            currentLine = testLine;
