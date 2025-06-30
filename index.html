@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivational Poster Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ Motivational Poster Creator</h1>
+            <p>Upload your image, add inspiring text, and create amazing motivational posters</p>
+        </div>
+
+        <div class="main-content">
+            <div class="canvas-area">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-text" id="uploadText">
+                        <div style="font-size: 4em; margin-bottom: 20px;">📷</div>
+                        <h3>Drop your image here or click to upload</h3>
+                        <p>JPG, PNG, GIF up to 10MB</p>
+                    </div>
+                    <canvas id="canvas" class="hidden"></canvas>
+                </div>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            </div>
+
+            <div class="controls">
+                <div class="quotes-section">
+                    <label>Quick Quotes</label>
+                    <div class="quote-grid">
+                        <button class="quote-btn" onclick="setQuote('The only way to do great work is to love what you do')">Love What You Do</button>
+                        <button class="quote-btn" onclick="setQuote('Believe you can and you are halfway there')">Believe in Yourself</button>
+                        <button class="quote-btn" onclick="setQuote('Success is not final, failure is not fatal')">Keep Going</button>
+                        <button class="quote-btn" onclick="setQuote('Dream big and dare to fail')">Dream Big</button>
+                        <button class="quote-btn" onclick="setQuote('Be yourself; everyone else is already taken')">Be Yourself</button>
+                        <button class="quote-btn" onclick="setQuote('Life is what happens to you while you are busy making other plans')">Live Now</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="textInput">Your Quote</label>
+                    <textarea id="textInput" placeholder="Enter your motivational quote here..."></textarea>
+                </div>
+
+                <div class="control-group">
+                    <label for="fontFamily">Font Style</label>
+                    <select id="fontFamily">
+                        <option value="Arial Black">Arial Black</option>
+                        <option value="Impact">Impact</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Courier New">Courier New</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Font Size</label>
+                    <div class="range-group">
+                        <input type="range" id="fontSize" min="20" max="100" value="40">
+                        <span class="range-value" id="fontSizeValue">40</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="textColor">Text Color</label>
+                    <input type="color" id="textColor" value="#ffffff" class="color-input">
+                </div>
+
+                <div class="control-group">
+                    <label for="textPosition">Text Position</label>
+                    <select id="textPosition">
+                        <option value="center">Center</option>
+                        <option value="top">Top</option>
+                        <option value="bottom">Bottom</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Text Shadow</label>
+                    <div class="range-group">
+                        <input type="range" id="textShadow" min="0" max="10" value="3">
+                        <span class="range-value" id="textShadowValue">3</span>
+                    </div>
+                </div>
+
+                <button class="download-btn" id="downloadBtn" onclick="downloadPoster()">
+                    📥 Download Poster
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>￼Enter
